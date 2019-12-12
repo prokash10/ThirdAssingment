@@ -27,32 +27,32 @@ import java.util.List;
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
-    EditText etname, etage, etaddress;
-    RadioGroup radiogroup;
-    Button btnsave;
+    EditText etName, etAge, etAddress;
+    RadioGroup radioGroup;
+    Button btnSave;
     String name, age, address, gender;
     public static List<Student> studentArrayList = new ArrayList<>();
 
     public boolean validate() {
         if (TextUtils.isEmpty(name)) {
-            etname.setError("Enter your FullName");
-            etname.requestFocus();
+            etName.setError("Enter your FullName");
+            etName.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(age)) {
-            etage.setError("Enter your Age");
-            etage.requestFocus();
+            etAge.setError("Enter your Age");
+            etAge.requestFocus();
             return false;
         }
         if (!TextUtils.isDigitsOnly(age)) {
-            etage.setError("Invalid Number");
-            etage.requestFocus();
+            etAge.setError("Invalid Number");
+            etAge.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(address)) {
-            etaddress.setError("Enter your Address");
-            etaddress.requestFocus();
+            etAddress.setError("Enter your Address");
+            etAddress.requestFocus();
             return false;
         }
 
@@ -72,18 +72,18 @@ public class DashboardFragment extends Fragment {
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        etname = root.findViewById(R.id.etname);
-        etage = root.findViewById(R.id.etage);
-        etaddress = root.findViewById(R.id.etaddress);
-        radiogroup = root.findViewById(R.id.radiogroup);
-        btnsave = root.findViewById(R.id.btnsave);
+        etName = root.findViewById(R.id.eName);
+        etAge = root.findViewById(R.id.eAge);
+        etAddress = root.findViewById(R.id.eAddress);
+        radioGroup = root.findViewById(R.id.radioGroup);
+        btnSave = root.findViewById(R.id.button);
 
 
         dashboardViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 
-                radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
                         if (i == R.id.rbMale) {
@@ -101,20 +101,20 @@ public class DashboardFragment extends Fragment {
 
                 });
 
-                btnsave.setOnClickListener(new View.OnClickListener() {
+                btnSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        name = etname.getText().toString();
-                        age = etage.getText().toString();
-                        address = etaddress.getText().toString();
+                        name = etName.getText().toString();
+                        age = etAge.getText().toString();
+                        address = etAddress.getText().toString();
                         if (validate()) {
                             studentArrayList.add(new Student(name, age, gender, address));
 
                             Toast.makeText(getContext(), "Saved Successfully", Toast.LENGTH_SHORT).show();
 
-                            etname.setText(null);
-                            etage.setText(null);
-                            etaddress.setText(null);
+                            etName.setText(null);
+                            etAge.setText(null);
+                            etAddress.setText(null);
 
                         }
                     }
