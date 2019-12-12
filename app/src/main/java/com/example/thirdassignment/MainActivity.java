@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText eUsername, ePassword;
-    Button buttonLogin;
+    EditText eusername, epassword;
+    Button buttonlogin;
     String username, password;
 
     @Override
@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        eUsername = findViewById(R.id.etUsername);
-        ePassword = findViewById(R.id.etPassword);
-        buttonLogin = findViewById(R.id.btnLogin);
+        eusername = findViewById(R.id.etusername);
+        epassword = findViewById(R.id.etpassword);
+        buttonlogin = findViewById(R.id.btnlogin);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username = eUsername.getText().toString();
-                password = ePassword.getText().toString();
+                username = eusername.getText().toString();
+                password = epassword.getText().toString();
                 if (username.equals("softwarica") && password.equals("coventry")) {
                     Intent intent = new Intent(MainActivity.this, BottomNavigationActivity.class);
                     startActivity(intent);

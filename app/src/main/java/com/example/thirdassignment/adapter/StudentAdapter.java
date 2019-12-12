@@ -39,11 +39,11 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyHolder
         final Student student = studentList.get(position);
         String gender = student.getGender();
 
-        holder.tName.setText(student.getName());
-        holder.tAge.setText(student.getAge());
-        holder.tAddress.setText(student.getAddress());
+        holder.tname.setText(student.getName());
+        holder.tage.setText(student.getAge());
+        holder.taddress.setText(student.getAddress());
 
-        holder.tGender.setText(student.getGender());
+        holder.tgender.setText(student.getGender());
 
         if (gender.equals("Male")) {
             holder.imageView.setImageResource(R.drawable.male_icon);
@@ -53,7 +53,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyHolder
             holder.imageView.setImageResource(R.drawable.image);
         }
 
-        holder.btn.setOnClickListener(new View.OnClickListener() {
+        holder.btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 studentList.remove(student);
@@ -72,18 +72,18 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyHolder
     public class MyHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView tName, tAge, tAddress, tGender;
-        Button btn;
+        TextView tname, tage, taddress, tgender;
+        Button btndelete;
 
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imgView);
-            tName = itemView.findViewById(R.id.tvName);
-            tAge = itemView.findViewById(R.id.tvAge);
-            tAddress = itemView.findViewById(R.id.tvAddress);
-            tGender = itemView.findViewById(R.id.tvGender);
-            btn = itemView.findViewById(R.id.btnDelete);
+            tname = itemView.findViewById(R.id.tvname);
+            tage = itemView.findViewById(R.id.tvage);
+            taddress = itemView.findViewById(R.id.etaddress);
+            tgender = itemView.findViewById(R.id.tvgender);
+            btndelete = itemView.findViewById(R.id.btndelete);
         }
     }
 
